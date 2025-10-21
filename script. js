@@ -28,3 +28,7 @@ function send() {
     input.value = "";
     chat.scrollTop = chat.scrollHeight;
 }
+document.getElementById("question").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    send();
+  }
