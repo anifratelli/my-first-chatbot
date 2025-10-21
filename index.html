@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita’s QnA Bot 🤖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #3b82f6;
+        }
+        #chat {
+            width: 90%;
+            max-width: 500px;
+            height: 350px;
+            border: 1px solid #ccc;
+            background: white;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        .user { color: #2563eb; }
+        .bot { color: #16a34a; }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        input {
+            width: 70%;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Anita’s QnA Bot 🤖</h1>
+    <div id="chat"></div>
+    <input type="text" id="question" placeholder="Type your question here...">
+    <button onclick="send()">Send</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
