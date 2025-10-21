@@ -1,0 +1,30 @@
+// Simple QnA Bot created by Anita ✨
+const knowledgeBase = {
+    "what is artificial intelligence": "Artificial Intelligence is the ability of machines to simulate human thinking and learning.",
+    "who created you": "I was created by Anita! 💙",
+    "hello": "Hi there! How are you?",
+    "how are you": "I'm great! Always ready to chat.",
+    "bye": "Goodbye! Have a wonderful day! 👋"
+};
+
+function send() {
+    const input = document.getElementById("question");
+    const chat = document.getElementById("chat");
+    const userText = input.value.trim().toLowerCase();
+
+    if (userText === "") return;
+
+    chat.innerHTML += `<p class="user"><b>You:</b> ${input.value}</p>`;
+
+    let reply = "Sorry, I don't know that yet. 🤔";
+    for (let key in knowledgeBase) {
+        if (userText.includes(key)) {
+            reply = knowledgeBase[key];
+            break;
+        }
+    }
+
+    chat.innerHTML += `<p class="bot"><b>Bot:</b> ${reply}</p>`;
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
