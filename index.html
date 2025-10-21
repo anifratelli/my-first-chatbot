@@ -50,6 +50,62 @@
     <input type="text" id="question" placeholder="Type your question here...">
     <button onclick="send()">Send</button>
 
-    <script src="script.js"></script>
+    <script>
+    // ----------------- Código JavaScript inline -----------------
+    const knowledgeBase = {
+        "what is artificial intelligence": "Artificial Intelligence is the ability of machines to simulate human thinking and learning.",
+        "who created you": "I was created by Anita! 💙",
+        "hello": "Hi there! How are you?",
+        "how are you": "I'm great! Always ready to chat.",
+        "bye": "Goodbye! Have a wonderful day! 👋"
+    };
+
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("question");
+
+    // Efeito de digitação
+    function typeText(element, text, i = 0) {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            setTimeout(() => typeText(element, text, i + 1), 30);
+        }
+    }
+
+    function send() {
+        const userText = input.value.trim().toLowerCase();
+        if (userText === "") return;
+
+        // Mensagem do usuário
+        const userMessage = document.createElement("p");
+        userMessage.classList.add("user");
+        userMessage.innerHTML = `<b>You:</b> ${input.value}`;
+        chat.appendChild(userMessage);
+
+        // Procura resposta
+        let reply = "Sorry, I don't know that yet. 🤔";
+        for (let key in knowledgeBase) {
+            if (userText.includes(key)) {
+                reply = knowledgeBase[key];
+                break;
+            }
+        }
+
+        // Mensagem do bot com efeito de digitação
+        const botMessage = document.createElement("p");
+        botMessage.classList.add("bot");
+        botMessage.innerHTML = `<b>Bot:</b> `;
+        chat.appendChild(botMessage);
+        typeText(botMessage, reply);
+
+        // Limpar input
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    // Enviar com Enter
+    input.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") send();
+    });
+    </script>
 </body>
 </html>
